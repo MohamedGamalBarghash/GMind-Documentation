@@ -3,20 +3,20 @@ This quest system provides players with goals, tasks, and objectives to complete
 ## Quest Manager:
  Quest Manager manages the quests in the game.
           Initialization:
-loadQuestState determines whether the system should load the quest state from previous sessions.
-questMap holds the quests in the game.
+loadQuestState determines whether the system should load the quest state from previous sessions.  
+questMap holds the quests in the game.  
          Quest Step State Change:
-QuestStepStateChange fun is called when a quest step's state changes. It updates the quest's step state and triggers a quest state change.
-Start methodrepresents the current quest steps for quests in progress and triggers a quest state change.
-Update method checks the requirements for quests and updates their states.
-ChangeQuestState method updates the state of a quest.
-StartQuest starts a quest by representing its current quest step and updating its state.
-AdvanceQuest advances a quest to the next step.
-FinishQuest finishes a quest, triggers rewards, and updates the state to finished.
-CheckRequirementsMet checks if the player meets the requirements to start a quest, like player level for example. 
-OnApplicationQuit saves the state of quests 
-SaveQuest saves the quest's data.
-LoadQuest loads a quest's data from PlayerPrefs.
+QuestStepStateChange fun is called when a quest step's state changes. It updates the quest's step state and triggers a quest state change.   
+Start methodrepresents the current quest steps for quests in progress and triggers a quest state change.  
+Update method checks the requirements for quests and updates their states.  
+ChangeQuestState method updates the state of a quest.  
+StartQuest starts a quest by representing its current quest step and updating its state.  
+AdvanceQuest advances a quest to the next step.  
+FinishQuest finishes a quest, triggers rewards, and updates the state to finished.  
+CheckRequirementsMet checks if the player meets the requirements to start a quest, like player level for example.   
+OnApplicationQuit saves the state of quests.  
+SaveQuest saves the quest's data.  
+LoadQuest loads a quest's data from PlayerPrefs.  
 ## User Interface Manager:
 The UI Manager script handles the user interface related to quests. 
         Quest UI Update:
