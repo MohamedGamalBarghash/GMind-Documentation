@@ -76,13 +76,13 @@ public QuestData GetQuestData()
 Unity scriptable object designed to store and manage quest-related data in a game. such as their display names, description, prerequisites, steps, and rewards.
 ## Attributes:
 ``` c#
-public int id;                                             // The quest id (unique identifier)
-public string displayName;                                 // The display name of the quest.
-public string description;                                 // The description of the quest.
-public int levelRequirement;                               // The level requirement to start the quest.
-public QuestDataScriptableObject[] questPrerequisites;     // Array of quest prerequisites required to unlock this quest.
-public GameObject[] questStepPrefabs;                      // Array of quest step prefabs that get instantiated during the quest.
-public Reward[] questRewards;                              // Array of rewards for completing the quest.
+public int id;                                                     // The quest id (unique identifier)
+public string displayName;                                         // The display name of the quest.
+public string description;                                         // The description of the quest.
+public int levelRequirement;                                       // The level requirement to start the quest.
+public QuestDataScriptableObject[] questPrerequisites;             // Array of quest prerequisites required to unlock this quest.
+public GameObject[] questStepPrefabs;                              // Array of quest step prefabs that get instantiated during the quest.
+public Reward[] questRewards;                                      // Array of rewards for completing the quest.
 ```
 
 # QuestStep Class
@@ -281,10 +281,10 @@ void Awake()
 Class responsible for managing quests in a game. It handles quest initialization, progression, and completion.
 ## Attributes:
 ``` c#
-[SerializeField] private bool loadQuestState;  //Determines whether the quest states should be loaded from the player's saved progress.
-private int currentPlayerLevel;  //Stores the current player level.
-public Dictionary<int, Quest> questMap; //Dictionary that maps quest IDs to Quest objects for efficient quest management.
-public static QuestManager instance; //Static reference to the QuestManager instance, utilizing the singleton pattern.
+[SerializeField] private bool loadQuestState;           //Determines whether the quest states should be loaded from the player's saved progress.
+private int currentPlayerLevel;                         //Stores the current player level.
+public Dictionary<int, Quest> questMap;                 //Dictionary that maps quest IDs to Quest objects for efficient quest management.
+public static QuestManager instance;                    //Static reference to the QuestManager instance, utilizing the singleton pattern.
 ```
 
 ## Functions:
@@ -382,6 +382,23 @@ private void SaveQuest(Quest quest)
 ``` c#
 private Quest LoadQuest(QuestDataScriptableObject questInfo)
 ```
+### - Awake ():
+###### Initializes questMap and sets the QuestManager instance.
+
+### - OnEnable ():
+###### Registers event handlers for quest-related events when the script is enabled.
+
+### - Start ():
+###### Initializes quests, instantiates quest steps for in-progress quests, (unimplemented) updates the quest UI.
+
+### - Update ():
+###### Periodically checks if quest requirements are met and updates quest states, (unimplemented) updates the Quest UI.
+
+### - OnApplicationQuit ():
+###### Saves the state of all quests when the application quits.
+
+### - On Disable ():
+###### Unregisters event handlers for quest-related events when the script is disabled.
 
 # QuestEvents Class
 
