@@ -1,9 +1,9 @@
 # QuestStep Class
 An abstract base class for implementing individual quest steps in a game.
 ```
-private bool isFinished = false;
-private int questId;
-private int stepIndex;
+private bool isFinished = false;             // Whether the step is finished or not (used by the Quest to determine the upcoming step).
+private int questId;                         // The quest the step belongs to.
+private int stepIndex;                       // The index of the step between the other steps.
 ```
 ## Functions:
 ### - InitializeQuestStep ():
