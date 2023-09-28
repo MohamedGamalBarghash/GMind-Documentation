@@ -11,16 +11,18 @@ private QuestStepState[] questStepStates;            // The states of individual
 ```
 ## Constructors:
 ###### Initializes a new quest instance with the provided quest data created with the Quest class.
-Parameters: - questInfo --> The static information about the quest.
+#### Parameters: 
+- questInfo --> The static information about the quest.
 ``` c#
 public Quest(QuestDataScriptableObject questInfo)
 ```
 
 ###### Initializes a new quest instance with saved state information.
-Parameters: - questInfo --> The static information about the quest.
-            - questState --> The saved state of the quest.
-            - currentQuestStepIndex --> The index of the current quest step.
-            - questStepStates --> The saved states of individual quest steps.
+#### Parameters: 
+- questInfo --> The static information about the quest.  
+- questState --> The saved state of the quest.  
+- currentQuestStepIndex --> The index of the current quest step.  
+- questStepStates --> The saved states of individual quest steps.  
 ``` c#
 public Quest(QuestDataScriptableObject questInfo, QuestState questState, int currentQuestStepIndex, QuestStepState[] questStepStates)
 ```
@@ -35,35 +37,37 @@ public void MoveToNextStep()
 ### - CurrentStepExists ():
 ###### Checks if the current step of the quest exists.
 - Returns: True if the current step exists; otherwise, false.
-```
+``` c#
 public bool CurrentStepExists()
 ```
 
 ### - InstantiateCurrentQuestStep ():
 ###### Instantiates the current quest step as a game object.
-Parameters: - parentTransform --> The transform where the quest step should be instantiated.
+#### Parameters: 
+- parentTransform --> The transform where the quest step should be instantiated.
 ``` c#
 public void InstantiateCurrentQuestStep(Transform parentTransform)
 ```
 
 ### - GetCurrentQuestStepPrefab ():
 ###### Retrieves the prefab for the current quest step.
-Returns: The quest step prefab for the current step, or null if it doesn't exist.
+- Returns: The quest step prefab for the current step, or null if it doesn't exist.
 ``` c#
 private GameObject GetCurrentQuestStepPrefab()
 ```
 
 ### - StoreQuestStepState ():
 ###### Stores the state of a quest step at a specified index.
-Parameters: - questStepState --> The state of the quest step to be stored.
-            - stepIndex --> The index of the quest step to store the state for.
+#### Parameters:
+- questStepState --> The state of the quest step to be stored.  
+- stepIndex --> The index of the quest step to store the state for.
 ``` c#
 public void StoreQuestStepState(QuestStepState questStepState, int stepIndex)
 ```
         
 ### - GetQuestData ():
 ###### Retrieves the data representing the current state and progress of the quest.
-Returns: A QuestData object containing the quest's state and step states.
+- Returns: A QuestData object containing the quest's state and step states.
 ``` c#
 public QuestData GetQuestData()
 ```
@@ -91,9 +95,10 @@ private int stepIndex;                       // The index of the step between th
 ## Functions:
 ### - InitializeQuestStep ():
 ###### Initializes the quest step with relevant information.
-Parameters: - questId --> The unique identifier of the associated quest.
-            - stepIndex --> The index of this quest step within the quest.
-            - questStepState --> The initial state of the quest step (optional).
+#### Parameters: 
+- questId --> The unique identifier of the associated quest.  
+- stepIndex --> The index of this quest step within the quest.  
+- questStepState --> The initial state of the quest step (optional).  
 ``` c#
 public void InitializeQuestStep(int questId, int stepIndex, string questStepState)
 ```
@@ -106,14 +111,16 @@ protected void FinishQuestStep()
 
 ### - ChangeState() :
 ###### Notifies a change in the state of the quest step to the EventManager.
-Parameters: newState --> The new state of the quest step.
+#### Parameters: 
+- newState --> The new state of the quest step.
 ``` c#
 protected void ChangeState(string newState)
 ```
 
 ### - SetQuestStepState ():
 ###### Sets the state of the quest step. Derived classes must implement this method.
-Parameters: state --> The new state of the quest step.
+#### Parameters: 
+- state --> The new state of the quest step.
 ``` c#
 protected abstract void SetQuestStepState(string state);
 ```
@@ -131,9 +138,10 @@ public QuestStepState[] questStepStates;  // An array containing the states of i
 
 ## Constructors:
 ###### Initializes a new instance of the QuestData class with the specified values.
-Parameters: - state --> The state of the quest.
-            - questStepIndex --> The index of the current quest step.
-            - questStepStates --> An array of quest step states.
+#### Parameters: 
+- state --> The state of the quest.  
+- questStepIndex --> The index of the current quest step.  
+- questStepStates --> An array of quest step states.  
 ``` c#
 public QuestData(QuestState state, int questStepIndex, QuestStepState[] questStepStates)
 ```
