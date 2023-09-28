@@ -1,4 +1,5 @@
-```
+### Quest Class
+``` c#
 using UnityEngine;
 
 namespace AI
@@ -142,4 +143,69 @@ namespace AI
         }
     }
 }
+```
+### Quest Data ScriptableObject
+``` c#
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+/// <summary>
+/// A ScriptableObject class representing data for a game quest.
+/// </summary>
+[CreateAssetMenu(fileName = "New QuestData", menuName = "ScriptableObjects/QuestData")]
+public class QuestDataScriptableObject : ScriptableObject
+{
+    /// <summary>
+    /// Unique identifier for the quest.
+    /// </summary>
+    [field: SerializeField]
+    public int id { get; private set; }
+
+    /// <summary>
+    /// The display name of the quest.
+    /// </summary>
+    [Header("General")]
+    public string displayName;
+
+    /// <summary>
+    /// The description of the quest.
+    /// </summary>
+    public string description;
+
+    /// <summary>
+    /// The level requirement to start the quest.
+    /// </summary>
+    [Header("Requirements")]
+    public int levelRequirement;
+
+    /// <summary>
+    /// Array of quest prerequisites required to unlock this quest.
+    /// </summary>
+    public QuestDataScriptableObject[] questPrerequisites;
+
+    /// <summary>
+    /// Array of quest step prefabs that get instantiated during the quest.
+    /// </summary>
+    [Header("Steps")]
+    public GameObject[] questStepPrefabs;
+
+    /// <summary>
+    /// Array of rewards for completing the quest.
+    /// </summary>
+    [Header("Rewards")]
+    public Reward[] questRewards;
+
+    /// <summary>
+    /// This method is called in the Unity Editor when the object is validated.
+    /// It ensures that the id is set to the name of the scriptable object.
+    /// </summary>
+    private void OnValidate()
+    {
+        #if UNITY_EDITOR
+        UnityEditor.EditorUtility.SetDirty(this);
+        #endif
+    }
+}
+
 ```
