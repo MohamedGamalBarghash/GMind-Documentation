@@ -1,4 +1,12 @@
-# Introduction:
+# Table of Contents
+1. [Introduction](#introduction)
+2. [Specifications](#specifications)
+   1. [Quest Class](#quest-class)
+   2.
+3. [QuestEvents Class](#questEvents-class)
+
+
+# Introduction: <a name="introduction"></a>
 This quest system provides players with goals, tasks, and objectives to complete, It manages quest states, requirements, steps, and rewards. here are the main parts needed to carry it out:
 ## Quest Manager:
  Quest Manager manages the quests in the game.
