@@ -1,4 +1,4 @@
-### Quest Class
+# Quest Class
 Represents a quest in a game, storing information about its state and progress.
 ```
 public QuestDataScriptableObject info;               // Static information about the quest.
