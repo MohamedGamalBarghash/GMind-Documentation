@@ -13,7 +13,7 @@
    10. [EventManager Class](#eventmanager-class)
    11. [QuestManager Class](#questmanager-class)
    12. [QuestEvents Class](#questevents-class)
-3. [QuestEvents Class](#questEvents-class)
+3. [Quest Creation](#quest-creation)
 
 
 # Introduction:
@@ -520,3 +520,13 @@ public void QuestStateChange(Quest quest)
 ``` c#
 public void QuestStepStateChange(int id, int stepIndex, QuestStepState questStepState)
 ```
+
+
+# Quest Creation
+1- Create a QuestDataScriptableObject:  
+First, create a QuestDataScriptableObject asset in Unity. This asset defines the properties of the quest, such as its display name, description, level requirements, prerequisites, step prefabs, and rewards.  
+2- Define Quest Data:  
+Populate the QuestDataScriptableObject asset with the relevant information for the quest, including its prerequisites, steps(assuming we have a step already created), and rewards.  
+3-	QuestManager Handles the new quest:  
+To initialize a quest, we will utilize the QuestManager to load the QuestDataScriptableObject from a predefined place initially (“resources\quests”).  
+Step: Each step represents a part of the quest, if we have a step to gather coins , the step script must handle  the coin collection behavior.  
