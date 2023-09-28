@@ -1,50 +1,22 @@
 ### Quest Class
-``` c#
-using UnityEngine;
+Represents a quest in a game, storing information about its state and progress.
+```
+    public QuestDataScriptableObject info;               // Static information about the quest.
+    public QuestState state;                             // The current state of the quest.
+    public int questId;                                  // The unique identifier for the quest.
+    private int currentQuestStepIndex;                   // The index of the current quest step within the quest.
+    private QuestStepState[] questStepStates;            // The states of individual quest steps.
+```
+### Constructors:
+###### Initializes a new quest instance with the provided quest data created with the Quest class.
+Parameters: - questInfo --> The static information about the quest.
+```
+    public Quest(QuestDataScriptableObject questInfo)
+```
 
-namespace AI
-{
-    /// <summary>
-    /// Represents a quest in a game, storing information about its state and progress.
-    /// </summary>
-    public class Quest
-    {
-        // Static information about the quest.
-        public QuestDataScriptableObject info;
-
-        // The current state of the quest.
-        public QuestState state;
-
-        // The unique identifier for the quest.
-        public int questId;
-
-        // The index of the current quest step within the quest.
-        private int currentQuestStepIndex;
-
-        // The states of individual quest steps.
-        private QuestStepState[] questStepStates;
-
-        /// <summary>
-        /// Initializes a new quest instance with the provided quest data.
-        /// </summary>
-        /// <param name="questInfo">The static information about the quest.</param>
-        public Quest(QuestDataScriptableObject questInfo)
-        {
-            this.info = questInfo;
-            this.state = QuestState.REQUIREMENTS_NOT_MET;
-            this.currentQuestStepIndex = 0;
-            this.questStepStates = new QuestStepState[info.questStepPrefabs.Length];
-            for (int i = 0; i < questStepStates.Length; i++)
-            {
-                questStepStates[i] = new QuestStepState();
-            }
-        }
-
-        /// <summary>
-        /// Initializes a new quest instance with saved state information.
-        /// </summary>
-        /// <param name="questInfo">The static information about the quest.</param>
-        /// <param name="questState">The saved state of the quest.</param>
+###### Initializes a new quest instance with saved state information.
+Parameters: - questInfo --> The static information about the quest.
+            - questState --> The saved state of the quest.
         /// <param name="currentQuestStepIndex">The index of the current quest step.</param>
         /// <param name="questStepStates">The saved states of individual quest steps.</param>
         public Quest(QuestDataScriptableObject questInfo, QuestState questState, int currentQuestStepIndex, QuestStepState[] questStepStates)
