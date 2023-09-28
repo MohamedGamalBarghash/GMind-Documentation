@@ -1,3 +1,42 @@
+# Introduction:
+This quest system provides players with goals, tasks, and objectives to complete, It manages quest states, requirements, steps, and rewards. here are the main parts needed to carry it out:
+## Quest Manager:
+ Quest Manager manages the quests in the game.
+          Initialization:
+loadQuestState determines whether the system should load the quest state from previous sessions.
+questMap holds the quests in the game.
+         Quest Step State Change:
+QuestStepStateChange fun is called when a quest step's state changes. It updates the quest's step state and triggers a quest state change.
+Start methodrepresents the current quest steps for quests in progress and triggers a quest state change.
+Update method checks the requirements for quests and updates their states.
+ChangeQuestState method updates the state of a quest.
+StartQuest starts a quest by representing its current quest step and updating its state.
+AdvanceQuest advances a quest to the next step.
+FinishQuest finishes a quest, triggers rewards, and updates the state to finished.
+CheckRequirementsMet checks if the player meets the requirements to start a quest, like player level for example. 
+OnApplicationQuit saves the state of quests 
+SaveQuest saves the quest's data.
+LoadQuest loads a quest's data from PlayerPrefs.
+## User Interface Manager:
+The UI Manager script handles the user interface related to quests. 
+        Quest UI Update:
+The UpdateQuestUI method clears the existing quest UI elements 
+         Quest Completion Display:
+
+Showquest Completion method displays a message indicating the completion of a quest.
+## Quest Step:
+It contains methods and properties related to quest step tracking and completion. 
+## Quest Step State:
+QuestStepState class shows the state of a quest step. It contains a state variable that can hold information about the current state of it.
+## Reward 
+The Reward class represents the reward given to the player when the quest is completed. It contains a type (such as experience, currency, or item) and the amount of the reward.
+
+## Event Manager and Quest Events:
+The Event Manager handles the events related to quests. It contains the QuestEvents , which defines events like starting a quest, advancing a quest, finishing a quest, changing quest state, and changing quest step state.
+
+![Quest System](https://github.com/MohamedGamalBarghash/GMind-Documentation/assets/26281629/eeacd3ed-4403-411b-9998-f58585f81ea1)
+
+
 # Quest Class
 ## Description:
 Represents a quest in a game, storing information about its state and progress.
