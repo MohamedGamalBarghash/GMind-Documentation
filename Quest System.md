@@ -72,11 +72,48 @@ public QuestData GetQuestData()
 Unity scriptable object designed to store and manage quest-related data in a game. such as their display names, description, prerequisites, steps, and rewards.
 ## Attributes:
 ``` c#
-public int id { get; private set; } // The quest id (unique identifier)
-public string displayName; // The display name of the quest.
-public string description; // The description of the quest.
-public int levelRequirement; // The level requirement to start the quest.
-public QuestDataScriptableObject[] questPrerequisites; // Array of quest prerequisites required to unlock this quest.
-public GameObject[] questStepPrefabs; // Array of quest step prefabs that get instantiated during the quest.
-public Reward[] questRewards; // Array of rewards for completing the quest.
+public int id;                                             // The quest id (unique identifier)
+public string displayName;                                 // The display name of the quest.
+public string description;                                 // The description of the quest.
+public int levelRequirement;                               // The level requirement to start the quest.
+public QuestDataScriptableObject[] questPrerequisites;     // Array of quest prerequisites required to unlock this quest.
+public GameObject[] questStepPrefabs;                      // Array of quest step prefabs that get instantiated during the quest.
+public Reward[] questRewards;                              // Array of rewards for completing the quest.
+```
+
+# QuestStep Class
+An abstract base class for implementing individual quest steps in a game.
+``` c#
+private bool isFinished = false;             // Whether the step is finished or not (used by the Quest to determine the upcoming step).
+private int questId;                         // The quest the step belongs to.
+private int stepIndex;                       // The index of the step between the other steps.
+```
+## Functions:
+### - InitializeQuestStep ():
+###### Initializes the quest step with relevant information.
+Parameters: - questId --> The unique identifier of the associated quest.
+            - stepIndex --> The index of this quest step within the quest.
+            - questStepState --> The initial state of the quest step (optional).
+``` c#
+public void InitializeQuestStep(int questId, int stepIndex, string questStepState)
+```
+
+### - FinishQuestStep ():
+###### Marks the quest step as finished and triggers quest progression.
+``` c#
+protected void FinishQuestStep()
+```
+
+### - ChangeState() :
+###### Notifies a change in the state of the quest step to the EventManager.
+Parameters: newState --> The new state of the quest step.
+``` c#
+protected void ChangeState(string newState)
+```
+
+### - SetQuestStepState ():
+###### Sets the state of the quest step. Derived classes must implement this method.
+Parameters: state --> The new state of the quest step.
+``` c#
+protected abstract void SetQuestStepState(string state);
 ```
