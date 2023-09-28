@@ -7,7 +7,7 @@ public int questId;                                  // The unique identifier fo
 private int currentQuestStepIndex;                   // The index of the current quest step within the quest.
 private QuestStepState[] questStepStates;            // The states of individual quest steps.
 ```
-### Constructors:
+## Constructors:
 ###### Initializes a new quest instance with the provided quest data created with the Quest class.
 Parameters: - questInfo --> The static information about the quest.
 ```
@@ -23,32 +23,32 @@ Parameters: - questInfo --> The static information about the quest.
 public Quest(QuestDataScriptableObject questInfo, QuestState questState, int currentQuestStepIndex, QuestStepState[] questStepStates)
 ```
 
-### Functions:
-#### - MoveToNextStep ():
+## Functions:
+### - MoveToNextStep ():
 ###### Moves to the next step of the quest.
 
-#### - CurrentStepExists ():
+### - CurrentStepExists ():
 ###### Checks if the current step of the quest exists.
 - Returns: True if the current step exists; otherwise, false.
 ```
 public bool CurrentStepExists()
 ```
 
-#### - InstantiateCurrentQuestStep ():
+### - InstantiateCurrentQuestStep ():
 ###### Instantiates the current quest step as a game object.
 Parameters: - parentTransform --> The transform where the quest step should be instantiated.
 ```
 public void InstantiateCurrentQuestStep(Transform parentTransform)
 ```
 
-#### - GetCurrentQuestStepPrefab ():
+### - GetCurrentQuestStepPrefab ():
 ###### Retrieves the prefab for the current quest step.
 Returns: The quest step prefab for the current step, or null if it doesn't exist.
 ```
 private GameObject GetCurrentQuestStepPrefab()
 ```
 
-#### - StoreQuestStepState ():
+### - StoreQuestStepState ():
 ###### Stores the state of a quest step at a specified index.
 Parameters: - questStepState --> The state of the quest step to be stored.
             - stepIndex --> The index of the quest step to store the state for.
@@ -56,7 +56,7 @@ Parameters: - questStepState --> The state of the quest step to be stored.
 public void StoreQuestStepState(QuestStepState questStepState, int stepIndex)
 ```
         
-#### - GetQuestData ():
+### - GetQuestData ():
 ###### Retrieves the data representing the current state and progress of the quest.
 Returns: A QuestData object containing the quest's state and step states.
 ```
