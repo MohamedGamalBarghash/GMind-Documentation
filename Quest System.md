@@ -26,6 +26,9 @@ public Quest(QuestDataScriptableObject questInfo, QuestState questState, int cur
 ## Functions:
 ### - MoveToNextStep ():
 ###### Moves to the next step of the quest.
+```
+public void MoveToNextStep()
+```
 
 ### - CurrentStepExists ():
 ###### Checks if the current step of the quest exists.
