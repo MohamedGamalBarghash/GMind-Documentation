@@ -1,6 +1,8 @@
 # Quest Class
+## Description:
 Represents a quest in a game, storing information about its state and progress.
-```
+## Attributes:
+``` c#
 public QuestDataScriptableObject info;               // Static information about the quest.
 public QuestState state;                             // The current state of the quest.
 public int questId;                                  // The unique identifier for the quest.
@@ -10,7 +12,7 @@ private QuestStepState[] questStepStates;            // The states of individual
 ## Constructors:
 ###### Initializes a new quest instance with the provided quest data created with the Quest class.
 Parameters: - questInfo --> The static information about the quest.
-```
+``` c#
 public Quest(QuestDataScriptableObject questInfo)
 ```
 
@@ -19,14 +21,14 @@ Parameters: - questInfo --> The static information about the quest.
             - questState --> The saved state of the quest.
             - currentQuestStepIndex --> The index of the current quest step.
             - questStepStates --> The saved states of individual quest steps.
-```
+``` c#
 public Quest(QuestDataScriptableObject questInfo, QuestState questState, int currentQuestStepIndex, QuestStepState[] questStepStates)
 ```
 
 ## Functions:
 ### - MoveToNextStep ():
 ###### Moves to the next step of the quest.
-```
+``` c#
 public void MoveToNextStep()
 ```
 
@@ -40,14 +42,14 @@ public bool CurrentStepExists()
 ### - InstantiateCurrentQuestStep ():
 ###### Instantiates the current quest step as a game object.
 Parameters: - parentTransform --> The transform where the quest step should be instantiated.
-```
+``` c#
 public void InstantiateCurrentQuestStep(Transform parentTransform)
 ```
 
 ### - GetCurrentQuestStepPrefab ():
 ###### Retrieves the prefab for the current quest step.
 Returns: The quest step prefab for the current step, or null if it doesn't exist.
-```
+``` c#
 private GameObject GetCurrentQuestStepPrefab()
 ```
 
@@ -55,13 +57,26 @@ private GameObject GetCurrentQuestStepPrefab()
 ###### Stores the state of a quest step at a specified index.
 Parameters: - questStepState --> The state of the quest step to be stored.
             - stepIndex --> The index of the quest step to store the state for.
-```
+``` c#
 public void StoreQuestStepState(QuestStepState questStepState, int stepIndex)
 ```
         
 ### - GetQuestData ():
 ###### Retrieves the data representing the current state and progress of the quest.
 Returns: A QuestData object containing the quest's state and step states.
-```
+``` c#
 public QuestData GetQuestData()
+```
+# Quest Data ScriptableObject
+## Description:
+Unity scriptable object designed to store and manage quest-related data in a game. such as their display names, description, prerequisites, steps, and rewards.
+## Attributes:
+``` c#
+public int id { get; private set; } // The quest id (unique identifier)
+public string displayName; // The display name of the quest.
+public string description; // The description of the quest.
+public int levelRequirement; // The level requirement to start the quest.
+public QuestDataScriptableObject[] questPrerequisites; // Array of quest prerequisites required to unlock this quest.
+public GameObject[] questStepPrefabs; // Array of quest step prefabs that get instantiated during the quest.
+public Reward[] questRewards; // Array of rewards for completing the quest.
 ```
