@@ -382,3 +382,67 @@ private void SaveQuest(Quest quest)
 ``` c#
 private Quest LoadQuest(QuestDataScriptableObject questInfo)
 ```
+
+# QuestEvents Class
+
+## Description:
+Handles events related to quests and provides methods for triggering these events.
+
+## Event Handlers:
+
+- `public event Action<int> onStartQuest;`: Event handler for when a quest is started.
+- `public event Action<int> onAdvanceQuest;`: Event handler for when a quest is advanced.
+- `public event Action<int> onFinishQuest;`: Event handler for when a quest is finished.
+- `public event Action<Quest> onQuestStateChange;`: Event handler for when the state of a quest changes.
+- `public event Action<int, int, QuestStepState> onQuestStepStateChange;`: Event handler for when the state of a quest step changes.
+
+## Functions
+
+### - StartQuest ():
+
+###### Triggers the `onStartQuest` event.
+
+#### Parameters:
+- `id` (int): The unique identifier of the quest.
+``` c#
+public void StartQuest(int id)
+```
+
+### - AdvanceQuest ():
+###### Triggers the `onAdvanceQuest` event.
+
+#### Parameters:
+- `id` (int): The unique identifier of the quest.
+``` c#
+public void AdvanceQuest(int id)
+```
+
+### - FinishQuest ():
+###### Triggers the `onFinishQuest` event.
+
+#### Parameters
+- `id` (int): The unique identifier of the quest.
+
+``` c#
+public void FinishQuest(int id)
+```
+
+### - QuestStateChange ():
+###### Triggers the `onQuestStateChange` event.
+
+#### Parameters
+- `quest` (Quest): The quest object whose state has changed.
+``` c#
+public void QuestStateChange(Quest quest)
+```
+
+### - QuestStepStateChange ():
+###### Triggers the `onQuestStepStateChange` event.
+
+#### Parameters
+- `id` (int): The unique identifier of the quest.
+- `stepIndex` (int): The index of the quest step.
+- `questStepState` (QuestStepState): The state of the quest step.
+``` c#
+public void QuestStepStateChange(int id, int stepIndex, QuestStepState questStepState)
+```
