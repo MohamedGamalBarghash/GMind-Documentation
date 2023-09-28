@@ -117,3 +117,23 @@ Parameters: state --> The new state of the quest step.
 ``` c#
 protected abstract void SetQuestStepState(string state);
 ```
+
+# QuestData class
+## Description:
+Represents the data associated with a quest's current state and progress.
+
+## Attributes:
+``` c#
+public QuestState state;                  // The state of the quest (e.g., in progress, completed, etc.).
+public int questStepIndex;                // The index of the current step within the quest.
+public QuestStepState[] questStepStates;  // An array containing the states of individual quest steps.
+```
+
+## Constructors:
+###### Initializes a new instance of the QuestData class with the specified values.
+Parameters: - state --> The state of the quest.
+            - questStepIndex --> The index of the current quest step.
+            - questStepStates --> An array of quest step states.
+``` c#
+public QuestData(QuestState state, int questStepIndex, QuestStepState[] questStepStates)
+```
