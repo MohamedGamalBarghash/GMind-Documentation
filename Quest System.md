@@ -145,3 +145,16 @@ public QuestStepState[] questStepStates;  // An array containing the states of i
 ``` c#
 public QuestData(QuestState state, int questStepIndex, QuestStepState[] questStepStates)
 ```
+
+# QuestState Enum
+## Description:
+Enumeration representing the possible states of a quest.
+
+## Attributes:
+```
+REQUIREMENTS_NOT_MET,        // The quest's requirements are not met, and it cannot be started.
+CAN_START,                   // The quest can be started but is not yet in progress.
+IN_PROGRESS,                 // The quest is currently in progress.
+CAN_FINISH,                  // The quest can be finished but is not yet completed.
+FINISHED                     // The quest has been successfully completed.
+```
