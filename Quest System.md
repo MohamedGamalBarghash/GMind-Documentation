@@ -36,7 +36,7 @@ The Event Manager handles the events related to quests. It contains the QuestEve
 
 ![Quest System](https://github.com/MohamedGamalBarghash/GMind-Documentation/assets/26281629/eeacd3ed-4403-411b-9998-f58585f81ea1)
 
-
+# Specifications:  
 # Quest Class
 ## Description:
 Represents a quest in a game, storing information about its state and progress.
