@@ -216,3 +216,62 @@ Currency       // Represents in-game currency as a reward.
 Item           // Represents an item as a reward.
 Karma          // Represents karma points as a reward.
 ```
+
+# UIManager Class
+
+## Description:
+Manages the user interface (UI) elements related to quests and provides functions for updating and displaying quest-related information.
+
+## Attributes:
+``` c#
+public static UIManager instance;    // A reference to the singleton instance of the UIManager.
+public GameObject questListUI;       // The UI panel displaying the list of quests.
+public GameObject questUIPrefab;     // The prefab used for creating quest UI elements.
+```
+
+## Functions:
+### - Awake ():
+###### Awake is a Unity method called when the script instance is loaded. In this case, it ensures that there is only one instance of the UIManager.
+``` c#
+private void Awake()
+```
+
+### - UpdateQuestUI ():
+###### Updates the quest UI by clearing existing UI elements and populating it with active quests.
+``` c#
+public void UpdateQuestUI()
+```
+
+### - ShowQuestCompletion ():
+###### Displays a UI element or message indicating quest completion.
+``` c#
+public void ShowQuestCompletion(QuestData quest)
+```
+
+## Usage:
+- Call `UpdateQuestUI()` to refresh the quest list UI.
+- Call `ShowQuestCompletion(quest)` to display quest completion information.
+
+# EventManager Class
+
+## Description:
+Manages game events and provides access to various event-related functionalities.
+
+## Attributes:
+``` c#
+public static EventManager instance { get; private set; }  // A reference to the singleton instance of the EventManager.
+public QuestEvents questEvents;                            // An instance of the QuestEvents class for managing quest-related events.
+```
+
+## Functions:
+
+### - Awake ():
+
+###### Awake is a Unity method called when the script instance is loaded. In this case, it ensures that there is only one instance of the EventManager and initializes the `questEvents` instance of the QuestEvents class.
+``` c#
+void Awake()
+```
+
+## Usage:
+- Access the EventManager singleton instance through `EventManager.instance`.
+- Use `questEvents` to manage quest-related events and functionalities.
