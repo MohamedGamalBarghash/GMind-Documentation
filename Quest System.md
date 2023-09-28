@@ -275,3 +275,110 @@ void Awake()
 ## Usage:
 - Access the EventManager singleton instance through `EventManager.instance`.
 - Use `questEvents` to manage quest-related events and functionalities.
+
+# QuestManager Class
+## Description:
+Class responsible for managing quests in a game. It handles quest initialization, progression, and completion.
+## Attributes:
+``` c#
+[SerializeField] private bool loadQuestState;  //Determines whether the quest states should be loaded from the player's saved progress.
+private int currentPlayerLevel;  //Stores the current player level.
+public Dictionary<int, Quest> questMap; //Dictionary that maps quest IDs to Quest objects for efficient quest management.
+public static QuestManager instance; //Static reference to the QuestManager instance, utilizing the singleton pattern.
+```
+
+## Functions:
+### - QuestStepStateChange ():
+###### Handles changes in quest step states and updates the quest's overall state.
+#### Parameters: 
+- id: The ID of the quest.
+- stepIndex: The index of the quest step.
+- QuestStepState: The index of the quest step.
+``` c#
+private void QuestStepStateChange(int id, int stepIndex, QuestStepState questStepState)
+```
+### - CheckRequirementsMet ():
+###### Checks if the player meets the requirements to start a quest, including player level and quest prerequisites.
+
+#### Parameters: 
+- quest: The quest to check requirements for.
+``` c#
+private bool CheckRequirementsMet(Quest quest)
+```
+### - ChangeQuestState ():
+###### Updates the state of a specific quest and triggers a QuestStateChange event.
+
+#### Parameters: 
+- id: The ID of the quest to update.
+- state: The new state of the quest.
+``` c#
+private void ChangeQuestState(int id, QuestState state)
+```
+### - StartQuest ():
+###### Initiates a quest, instantiates the current quest step, and changes the quest state to in-progress.
+
+#### Parameters: 
+- id: The ID of the quest to start.
+``` c#
+public void StartQuest(int id)
+```
+### - AdvanceQuest ():
+###### Advances a quest to its next step, instantiates the new step, and updates the quest state accordingly.
+
+#### Parameters: 
+- id: The ID of the quest to advance.
+``` c#
+public void AdvanceQuest(int id)
+```
+### - FinishQuest ():
+###### Completes a quest, claims rewards, and changes the quest state to finished.
+
+#### Parameters: 
+- id: The ID of the quest to finish.
+``` c#
+public void FinishQuest(int id)
+```
+### - ClaimRewards ():
+###### Placeholder for handling the granting of quest rewards (not implemented).
+
+#### Parameters: 
+- quest: The quest for which to claim rewards.
+``` c#
+private void ClaimRewards(Quest quest)
+```
+### - CreateQuestMap ():
+###### Creates a dictionary mapping quest IDs to Quest objects by loading QuestDataScriptableObject assets.
+
+#### Return: 
+- Dictionary<int, Quest>: A dictionary mapping quest IDs to Quest objects.
+``` c#
+private Dictionary<int, Quest> CreateQuestMap()
+```
+### - GetQuestById ():
+###### Retrieves a quest by its ID from the questMap dictionary.
+
+#### Parameters: 
+- id: The ID of the quest to retrieve.
+#### Return:
+- quest: The quest associated with the provided ID.
+``` c#
+private Quest GetQuestById(int id)
+```
+### - SaveQuest ():
+###### Serializes and saves the state of a quest using PlayerPrefs.
+
+#### Parameters: 
+- quest: The quest to save.
+``` c#
+private void SaveQuest(Quest quest)
+```
+### - LoadQuest ():
+###### Loads and initializes a quest from PlayerPrefs or creates a new quest if none exists.
+
+#### Parameters: 
+- questInfo: The QuestDataScriptableObject that defines the quest.
+#### Return: 
+- quest: The loaded or newly created quest.
+``` c#
+private Quest LoadQuest(QuestDataScriptableObject questInfo)
+```
