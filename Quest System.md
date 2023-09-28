@@ -181,3 +181,38 @@ public QuestStepState(string state)
 ``` c#
 public QuestStepState()
 ```
+
+# Reward Class
+
+## Description
+Represents a reward given to a player, which may include various types of rewards such as experience points, currency, items, or karma.
+
+## Attributes
+``` c#
+public RewardType type;          // The type of reward.
+public int amount;               // The amount or value of the reward.
+```
+
+## Constructors
+
+###### Initializes a new reward instance with the specified type and amount.
+
+#### Parameters:
+- `t` --> The type of reward.
+- `amt` --> The amount or value of the reward.
+``` c#
+public Reward(RewardType t, int amt)
+```
+
+# RewardType Enum
+
+## Description
+Enumeration representing the possible types of rewards that can be given to a player.
+
+#### Values:
+``` c#
+Experience     // Represents experience points as a reward.
+Currency       // Represents in-game currency as a reward.
+Item           // Represents an item as a reward.
+Karma          // Represents karma points as a reward.
+```
