@@ -2,11 +2,21 @@
 1. [Introduction](#introduction)
 2. [Specifications](#specifications)
    1. [Quest Class](#quest-class)
-   2.
+   2. [QuestData ScriptableObject](#questdata-scriptableobject)
+   3. [QuestStep Class](#queststep-class)
+   4. [QuestData Class](#questdata-class)
+   5. [QuestState Enum](#queststate-enum)
+   6. [QuestStepState Class](#queststepstate-class)
+   7. [Reward Class](#reward-class)
+   8. [RewardType Enum](#rewardtype-enum)
+   9. [UIManager Class](#uimanager-class)
+   10. [EventManager Class](#eventmanager-class)
+   11. [QuestManager Class](#questmanager-class)
+   12. [QuestEvents Class](#questevents-class)
 3. [QuestEvents Class](#questEvents-class)
 
 
-# Introduction: <a name="introduction"></a>
+# Introduction:
 This quest system provides players with goals, tasks, and objectives to complete, It manages quest states, requirements, steps, and rewards. here are the main parts needed to carry it out:
 ## Quest Manager:
  Quest Manager manages the quests in the game.
@@ -118,7 +128,7 @@ public void StoreQuestStepState(QuestStepState questStepState, int stepIndex)
 ``` c#
 public QuestData GetQuestData()
 ```
-# Quest Data ScriptableObject
+# QuestData ScriptableObject
 ## Description:
 Unity scriptable object designed to store and manage quest-related data in a game. such as their display names, description, prerequisites, steps, and rewards.
 ## Attributes:
@@ -172,7 +182,7 @@ protected void ChangeState(string newState)
 protected abstract void SetQuestStepState(string state);
 ```
 
-# QuestData class
+# QuestData Class
 ## Description:
 Represents the data associated with a quest's current state and progress.
 
@@ -338,9 +348,9 @@ public static QuestManager instance;                    //Static reference to th
 ### - QuestStepStateChange ():
 ###### Handles changes in quest step states and updates the quest's overall state.
 #### Parameters: 
-- id: The ID of the quest.
-- stepIndex: The index of the quest step.
-- QuestStepState: The index of the quest step.
+- `id`: The ID of the quest.
+- `stepIndex`: The index of the quest step.
+- `questStepState`: The index of the quest step.
 ``` c#
 private void QuestStepStateChange(int id, int stepIndex, QuestStepState questStepState)
 ```
@@ -348,7 +358,7 @@ private void QuestStepStateChange(int id, int stepIndex, QuestStepState questSte
 ###### Checks if the player meets the requirements to start a quest, including player level and quest prerequisites.
 
 #### Parameters: 
-- quest: The quest to check requirements for.
+- `quest`: The quest to check requirements for.
 ``` c#
 private bool CheckRequirementsMet(Quest quest)
 ```
@@ -356,8 +366,8 @@ private bool CheckRequirementsMet(Quest quest)
 ###### Updates the state of a specific quest and triggers a QuestStateChange event.
 
 #### Parameters: 
-- id: The ID of the quest to update.
-- state: The new state of the quest.
+- `id`: The ID of the quest to update.
+- `state`: The new state of the quest.
 ``` c#
 private void ChangeQuestState(int id, QuestState state)
 ```
@@ -365,7 +375,7 @@ private void ChangeQuestState(int id, QuestState state)
 ###### Initiates a quest, instantiates the current quest step, and changes the quest state to in-progress.
 
 #### Parameters: 
-- id: The ID of the quest to start.
+- `id`: The ID of the quest to start.
 ``` c#
 public void StartQuest(int id)
 ```
@@ -373,7 +383,7 @@ public void StartQuest(int id)
 ###### Advances a quest to its next step, instantiates the new step, and updates the quest state accordingly.
 
 #### Parameters: 
-- id: The ID of the quest to advance.
+- `id`: The ID of the quest to advance.
 ``` c#
 public void AdvanceQuest(int id)
 ```
@@ -381,7 +391,7 @@ public void AdvanceQuest(int id)
 ###### Completes a quest, claims rewards, and changes the quest state to finished.
 
 #### Parameters: 
-- id: The ID of the quest to finish.
+- `id`: The ID of the quest to finish.
 ``` c#
 public void FinishQuest(int id)
 ```
@@ -389,7 +399,7 @@ public void FinishQuest(int id)
 ###### Placeholder for handling the granting of quest rewards (not implemented).
 
 #### Parameters: 
-- quest: The quest for which to claim rewards.
+- `quest`: The quest for which to claim rewards.
 ``` c#
 private void ClaimRewards(Quest quest)
 ```
@@ -405,7 +415,7 @@ private Dictionary<int, Quest> CreateQuestMap()
 ###### Retrieves a quest by its ID from the questMap dictionary.
 
 #### Parameters: 
-- id: The ID of the quest to retrieve.
+- `id`: The ID of the quest to retrieve.
 #### Return:
 - quest: The quest associated with the provided ID.
 ``` c#
@@ -415,7 +425,7 @@ private Quest GetQuestById(int id)
 ###### Serializes and saves the state of a quest using PlayerPrefs.
 
 #### Parameters: 
-- quest: The quest to save.
+- `quest`: The quest to save.
 ``` c#
 private void SaveQuest(Quest quest)
 ```
@@ -423,7 +433,7 @@ private void SaveQuest(Quest quest)
 ###### Loads and initializes a quest from PlayerPrefs or creates a new quest if none exists.
 
 #### Parameters: 
-- questInfo: The QuestDataScriptableObject that defines the quest.
+- `questInfo`: The QuestDataScriptableObject that defines the quest.
 #### Return: 
 - quest: The loaded or newly created quest.
 ``` c#
