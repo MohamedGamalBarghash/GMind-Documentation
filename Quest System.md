@@ -12,17 +12,17 @@ private QuestStepState[] questStepStates;            // The states of individual
 ## Constructors:
 ###### Initializes a new quest instance with the provided quest data created with the Quest class.
 #### Parameters: 
-- questInfo --> The static information about the quest.
+- `questInfo` --> The static information about the quest.
 ``` c#
 public Quest(QuestDataScriptableObject questInfo)
 ```
 
 ###### Initializes a new quest instance with saved state information.
 #### Parameters: 
-- questInfo --> The static information about the quest.  
-- questState --> The saved state of the quest.  
-- currentQuestStepIndex --> The index of the current quest step.  
-- questStepStates --> The saved states of individual quest steps.  
+- `questInfo` --> The static information about the quest.  
+- `questState` --> The saved state of the quest.  
+- `currentQuestStepIndex` --> The index of the current quest step.  
+- `questStepStates` --> The saved states of individual quest steps.  
 ``` c#
 public Quest(QuestDataScriptableObject questInfo, QuestState questState, int currentQuestStepIndex, QuestStepState[] questStepStates)
 ```
@@ -44,7 +44,7 @@ public bool CurrentStepExists()
 ### - InstantiateCurrentQuestStep ():
 ###### Instantiates the current quest step as a game object.
 #### Parameters: 
-- parentTransform --> The transform where the quest step should be instantiated.
+- `parentTransform` --> The transform where the quest step should be instantiated.
 ``` c#
 public void InstantiateCurrentQuestStep(Transform parentTransform)
 ```
@@ -59,8 +59,8 @@ private GameObject GetCurrentQuestStepPrefab()
 ### - StoreQuestStepState ():
 ###### Stores the state of a quest step at a specified index.
 #### Parameters:
-- questStepState --> The state of the quest step to be stored.  
-- stepIndex --> The index of the quest step to store the state for.
+- `questStepState` --> The state of the quest step to be stored.  
+- `stepIndex` --> The index of the quest step to store the state for.
 ``` c#
 public void StoreQuestStepState(QuestStepState questStepState, int stepIndex)
 ```
@@ -96,9 +96,9 @@ private int stepIndex;                       // The index of the step between th
 ### - InitializeQuestStep ():
 ###### Initializes the quest step with relevant information.
 #### Parameters: 
-- questId --> The unique identifier of the associated quest.  
-- stepIndex --> The index of this quest step within the quest.  
-- questStepState --> The initial state of the quest step (optional).  
+- `questId` --> The unique identifier of the associated quest.  
+- `stepIndex` --> The index of this quest step within the quest.  
+- `questStepState` --> The initial state of the quest step (optional).  
 ``` c#
 public void InitializeQuestStep(int questId, int stepIndex, string questStepState)
 ```
@@ -112,7 +112,7 @@ protected void FinishQuestStep()
 ### - ChangeState() :
 ###### Notifies a change in the state of the quest step to the EventManager.
 #### Parameters: 
-- newState --> The new state of the quest step.
+- `newState` --> The new state of the quest step.
 ``` c#
 protected void ChangeState(string newState)
 ```
@@ -120,7 +120,7 @@ protected void ChangeState(string newState)
 ### - SetQuestStepState ():
 ###### Sets the state of the quest step. Derived classes must implement this method.
 #### Parameters: 
-- state --> The new state of the quest step.
+- `state` --> The new state of the quest step.
 ``` c#
 protected abstract void SetQuestStepState(string state);
 ```
@@ -139,9 +139,9 @@ public QuestStepState[] questStepStates;  // An array containing the states of i
 ## Constructors:
 ###### Initializes a new instance of the QuestData class with the specified values.
 #### Parameters: 
-- state --> The state of the quest.  
-- questStepIndex --> The index of the current quest step.  
-- questStepStates --> An array of quest step states.  
+- `state` --> The state of the quest.  
+- `questStepIndex` --> The index of the current quest step.  
+- `questStepStates` --> An array of quest step states.  
 ``` c#
 public QuestData(QuestState state, int questStepIndex, QuestStepState[] questStepStates)
 ```
@@ -157,4 +157,27 @@ CAN_START,                   // The quest can be started but is not yet in progr
 IN_PROGRESS,                 // The quest is currently in progress.
 CAN_FINISH,                  // The quest can be finished but is not yet completed.
 FINISHED                     // The quest has been successfully completed.
+```
+
+# QuestStepState Class
+## Description:
+Represents the state of an individual quest step.
+## Attributes
+``` c#
+public string state;    // The state of the quest step.
+```
+
+## Constructors:
+
+###### Initializes a new quest step state with the provided state value.
+
+#### Parameters:
+- `state` --> The initial state of the quest step.
+``` c#
+public QuestStepState(string state)
+```
+
+### Initializes a new quest step state with an empty state value.
+``` c#
+public QuestStepState()
 ```
